@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <b><font face="Comic Sans"  style='cursive'> {{ message }}</font></b> <br />
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    <br />
+    <form action="" method="post" novalidate>
+        Click to read existing schemas <br />
+         <br />
+        <input type="submit" name='action', class='button' value='Read' style="vertical-align:middle">
+        <p>
+            Insert the id of the schema and click the button to get certain schema <br />
+            <br />
+            {{ form.id(size=4) }}
+        </p>
+        <br />
+        <input type="submit" name='action', class='button' value='Get' style="vertical-align:middle">
+        <p>
+            Insert new schema in json format and click the button to upload new schema<br />
+            <br />
+            {{ form.newSchema(size=100) }}
+        </p>
+        <br />
+        <input type="submit" name='action', class='button' value='Upload' style="vertical-align:middle">
+        <p>
+            Insert the id of the schema and click the button to delete certain schema <br />
+            <br />
+            {{ form.idDelete(size=4) }}
+        </p>
+        <br />
+        <input type="submit" name='action', class='button' value='Delete' style="vertical-align:middle">
+    </form>
+</center>
+{% endblock %}

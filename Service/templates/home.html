@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+    <center>
+    <style>
+    .button {
+      display: inline-block;
+      border-radius: 4px;
+      background-color: #FFFFFF;
+      border: none;
+      color: #0543D1;
+      text-align: center;
+      font-size: 28px;
+      padding: 13px;
+      width: 150px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    .button:hover span {
+      padding-right: 25px;
+    }
+
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+    </style>
+    <h1>Welcome to verification Service</h1>
+    <body>
+        Here you can check your collected data. Choose the type of error to check. <br />
+        <br />
+        <form method="POST", action="">
+            <div>{{ form.link(rows=3, multiple=True) }}</div>
+             <input type="submit" class='button' value='Submit' style="vertical-align:middle">
+
+        </form>
+        <font style="color: white;">
+        Error 1 - there is text field in <b>n</b> samlpes, but it disappears in <b>n + 1</b> sample. <br />
+            <br />
+        Error 2 - there is text field with probability <b>p</b> and then it disappears. <br />
+            <br />
+        Error 3 - number field is in range <b>[1,10]</b> and then it's in range <b>[50,70]</b>. <br />
+            <br />
+        Error 4 - format of the phone number changes. <br />
+            <br />
+        Error 5 - the quantity of collected items changes. <br />
+        </font>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <b><font face="Comic Sans" size="6" style='cursive'> {{ message }}</font></b> <br />
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    </body>
+    
+    </center>
+{% endblock %}

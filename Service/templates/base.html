@@ -1,0 +1,68 @@
+ <style>
+    .button {
+      display: inline-block;
+      border-radius: 4px;
+      background-color: #FFFFFF;
+      border: none;
+      color: #0543D1;
+      text-align: center;
+      font-size: 28px;
+      padding: 13px;
+      width: 150px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    .button:hover span {
+      padding-right: 25px;
+    }
+
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+</style>
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Verification service</title>
+      {% else %}
+      <title>Welcome to Service</title>
+      {% endif %}
+    </head>
+    <body>
+        <div>
+            <a style="color: white"  href="/home">Home</a>
+            <a style="color: white"  href="/verify">Verify</a>
+            <a style="color: white"  href="/schemas">Schemas</a>
+        </div>
+        <hr>
+        {% block content %}{% endblock %}
+        <style>
+        body {
+            background-image: url({{ url_for('static', filename='background2.jpg') }});
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            background-size: cover;
+        }
+        </style>
+        <body text='#FFFFFF'>
+    </body>
+</html>
