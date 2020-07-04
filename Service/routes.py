@@ -254,7 +254,7 @@ def home():
 @app.route('/requests/<int:schema_id>/generate', methods=['POST'])
 def generate(schema_id):
     global error
-    n = 15
+    n = 30
     path = 'Service/schemas.json'
     with open(path, 'r') as f:
         schemass = json.loads(f.read())
